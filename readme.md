@@ -10,6 +10,9 @@
     - [安装docker-gen](#安装docker-gen)
     - [生成nginx配置文件](#生成nginx配置文件)
     - [开启反向代理](#开启反向代理)
+- [我的一个静态网页](#我的一个静态网页)
+    - [备份](#备份)
+    - [开启静态网页nginx](#开启静态网页nginx)
 
 <!-- /TOC -->
 
@@ -91,3 +94,27 @@ docker run -d --restart=always --name my-proxy \
     nginx
 ```
 
+
+# 我的一个静态网页
+```
+wget https://raw.githubusercontent.com/yqsy/dokuwiki-docker/master/nginx.conf
+```
+
+
+## 备份
+```
+tar -cvzf $DATE-web-backup.tar.gz /root/web/utksmbcc/web
+```
+
+## 开启静态网页nginx
+```
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+docker run -d --restart=always --name utksmbcc \
+    -v $DIR/nginx.conf:/etc/nginx/nginx.conf \
+    -v $DIR/log/:/var/log/nginx/ \
+    -v $DIR/web/:/usr/share/web/ \
+    --expose 80 \
+    -e VIRTUAL_HOST=utksmbcc.xyz \
+    nginx
+```
