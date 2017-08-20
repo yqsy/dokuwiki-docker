@@ -9,5 +9,4 @@ docker run \
 docker run --rm --volumes-from dokuwiki-backup \
   -v $(pwd):/backup \
   ubuntu:14.04 \
-  bash -c "cd / && tar -xvzf /$1"
-  
+  bash -c "cd / && tar -xvzf /backup/$1"
