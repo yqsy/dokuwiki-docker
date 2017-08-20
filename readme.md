@@ -103,7 +103,7 @@ wget https://raw.githubusercontent.com/yqsy/dokuwiki-docker/master/nginx.conf
 
 ## 备份
 ```
-tar -cvzf $DATE-web-backup.tar.gz /root/web/utksmbcc/web
+tar -cvzf $DATE-web-backup.tar.gz web
 ```
 
 ## 开启静态网页nginx
