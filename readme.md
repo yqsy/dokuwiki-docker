@@ -28,6 +28,7 @@ docker run --rm --volumes-from dokuwiki \
 ## 斟酌是否删除container
 ```
 docker rm dokuwiki
+docker volume rm $(docker volume ls -qf dangling=true)
 ```
 
 # 从备份gz生成数据卷容器
