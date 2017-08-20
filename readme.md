@@ -84,7 +84,7 @@ docker-gen nginx.tmpl > nginx.conf
 ```
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-docker run -d --restart=always --name my-prox \
+docker run -d --restart=always --name my-proxy \
     -v $DIR/nginx.conf:/etc/nginx/nginx.conf \
     -v $DIR/log:/var/log/nginx/ \
     -p 80:80 \
